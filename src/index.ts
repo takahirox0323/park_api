@@ -3,6 +3,13 @@ import cors from "cors";
 import "reflect-metadata";
 import { getConnectionOptions, createConnection } from "typeorm";
 import branchRouter from "@routes/branch";
+import commentRouter from "@routes/branch";
+import likeRouter from "@routes/like";
+import parkRouter from "@routes/Park";
+import prefectureRouter from "@routes/Prefecture";
+import tagRouter from "@routes/Tag";
+import userRouter from "@routes/User";
+import userSettingRouter from "@routes/userSetting";
 import { logger } from "./config";
 
 const main = async () => {
@@ -25,6 +32,13 @@ const main = async () => {
 
   // ルータの登録
   app.use("/api/branches", branchRouter);
+  app.use("/api/comments", commentRouter);
+  app.use("/api/likes", likeRouter);
+  app.use("/api/parks", parkRouter);
+  app.use("/api/prefectures", prefectureRouter);
+  app.use("/api/tags", tagRouter);
+  app.use("/api/users", userRouter);
+  app.use("/api/userSettings", userSettingRouter);
 
   app.get("/", (req, res) => {
     res.send("Hello");

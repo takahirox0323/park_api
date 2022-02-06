@@ -1,5 +1,5 @@
 import Comment from "@/entities/Comment";
-import { CommentDeleteRequest, CommentRequest } from "@/types/user copy";
+import { CommentDeleteRequest, CommentRequest } from "@/types/comment";
 
 export default interface CommentRepository {
   // 支社を取得

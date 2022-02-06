@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import { Repository, getRepository } from "typeorm";
 import Comment from "@/entities/Comment";
 import CommentRepository from "./CommentRepository";
-import { CommentDeleteRequest, CommentRequest } from "@/types/user copy";
+import { CommentDeleteRequest, CommentRequest } from "@/types/comment";
 
 @injectable()
 export default class CommentRepositoryImpl implements CommentRepository {
