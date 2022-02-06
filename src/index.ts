@@ -29,7 +29,7 @@ const main = async () => {
   app.get("/", (req, res) => {
     res.send("Hello");
   });
-  const port = "8888";
+  const port = "7000";
 
   app.listen(port, () => {
     console.log(`app running!`);
