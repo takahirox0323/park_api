@@ -10,7 +10,6 @@ import prefectureRouter from "@routes/Prefecture";
 import tagRouter from "@routes/Tag";
 import userRouter from "@routes/User";
 import userSettingRouter from "@routes/userSetting";
-import { logger } from "./config";
 
 const main = async () => {
   // TypeORMの設定

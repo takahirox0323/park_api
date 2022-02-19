@@ -8,7 +8,7 @@ let parkController: ParkController;
 
 router.use((req, res, next) => {
   // DIコンテナから依存性が注入されたコントローラを取得
-  parkController = container.get<ParkController>("parkController");
+  parkController = container.get<ParkController>("ParkController");
   next();
 });
 

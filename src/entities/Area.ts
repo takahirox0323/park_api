@@ -8,9 +8,6 @@ export default class Area {
   @Column({ type: "varchar" })
   name?: string;
 
-  @Column({ type: "varchar" })
-  areaId?: number;
-
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
   createdAt?: Date;
 
