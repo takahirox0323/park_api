@@ -8,7 +8,7 @@ let likeController: LikeController;
 
 router.use((req, res, next) => {
   // DIコンテナから依存性が注入されたコントローラを取得
-  likeController = container.get<LikeController>("likeController");
+  likeController = container.get<LikeController>("LikeController");
   next();
 });
 

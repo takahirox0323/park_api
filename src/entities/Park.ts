@@ -9,7 +9,7 @@ export default class Park {
   name?: string;
 
   @Column({ type: "varchar" })
-  Address?: string;
+  address?: string;
 
   @Column({ type: "varchar" })
   description?: string;

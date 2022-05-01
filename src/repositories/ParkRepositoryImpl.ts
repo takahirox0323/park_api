@@ -23,6 +23,17 @@ export default class ParkRepositoryImpl implements ParkRepository {
   public async create(brachRequest: ParkRequest): Promise<any> {
     return await this.repository.save({
       name: brachRequest.name,
+      address: brachRequest.address,
+      description: brachRequest.description,
+      prefectureId: brachRequest.prefectureId,
+      areaId: brachRequest.areaId,
+      countryId: brachRequest.countryId,
+      parkUrl: brachRequest.parkUrl,
+      openingTime: brachRequest.openingTime,
+      price: brachRequest.price,
+      categoryId: brachRequest.categoryId,
+      parkTypeId: brachRequest.parkTypeId,
+      createdUserId: brachRequest.createdUserId,
     });
   }
 

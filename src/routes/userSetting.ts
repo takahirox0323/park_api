@@ -9,7 +9,7 @@ let userSettingController: UserSettingController;
 router.use((req, res, next) => {
   // DIコンテナから依存性が注入されたコントローラを取得
   userSettingController = container.get<UserSettingController>(
-    "userSettingController"
+    "UserSettingController"
   );
   next();
 });

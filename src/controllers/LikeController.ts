@@ -5,7 +5,7 @@ import { logger } from "@/config";
 import { LikeRequest } from "@/types/like";
 
 @injectable()
-export default class likeController {
+export default class LikeController {
   private LikeService: LikeService;
 
   // サービスをコンストラクタで注入（DI）

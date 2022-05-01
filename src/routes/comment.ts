@@ -8,7 +8,7 @@ let commentController: CommentController;
 
 router.use((req, res, next) => {
   // DIコンテナから依存性が注入されたコントローラを取得
-  commentController = container.get<CommentController>("commentController");
+  commentController = container.get<CommentController>("CommentController");
   next();
 });
 

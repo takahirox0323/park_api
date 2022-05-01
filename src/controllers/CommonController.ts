@@ -9,7 +9,7 @@ export default class CommentController {
   private CommentService: CommentService;
 
   // サービスをコンストラクタで注入（DI）
-  constructor(@inject("CommonService") CommonService: CommentService) {
+  constructor(@inject("CommentService") CommonService: CommentService) {
     this.CommentService = CommonService;
   }
 

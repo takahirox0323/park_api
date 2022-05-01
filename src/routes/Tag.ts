@@ -8,7 +8,7 @@ let tagController: TagController;
 
 router.use((req, res, next) => {
   // DIコンテナから依存性が注入されたコントローラを取得
-  tagController = container.get<TagController>("tagController");
+  tagController = container.get<TagController>("TagController");
   next();
 });
 

@@ -3,7 +3,7 @@ import cors from "cors";
 import "reflect-metadata";
 import { getConnectionOptions, createConnection } from "typeorm";
 import branchRouter from "@routes/branch";
-import commentRouter from "@routes/branch";
+import commentRouter from "@routes/comment";
 import likeRouter from "@routes/like";
 import parkRouter from "@routes/Park";
 import prefectureRouter from "@routes/Prefecture";
@@ -42,7 +42,7 @@ const main = async () => {
   app.get("/", (req, res) => {
     res.send("Hello");
   });
-  const port = "7000";
+  const port = "4000";
 
   app.listen(port, () => {
     console.log(`app running!`);
