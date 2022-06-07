@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import PrefectureService from "@services/PrefectureService";
+import PrefectureService from "@/use-case/PrefectureService";
 import { logger } from "@/config";
-import { PrefectureRequest } from "@/types/prefecture";
+import { PrefectureRequest } from "@/presentation/types/prefecture";
 
 @injectable()
 export default class PrefectureController {
@@ -15,7 +15,7 @@ export default class PrefectureController {
     this.PrefectureService = PrefectureService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /prefectures");
 
     // ユーザ取得

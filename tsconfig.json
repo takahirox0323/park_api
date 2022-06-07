@@ -44,27 +44,6 @@
       "@/*": [
         "src/*"
       ],
-      "@constants/*": [
-        "src/constants/*"
-      ],
-      "@controllers/*": [
-        "src/controllers/*"
-      ],
-      "@entities/*": [
-        "src/entities/*"
-      ],
-      "@repositories/*": [
-        "src/repositories/*"
-      ],
-      "@routes/*": [
-        "src/routes/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@Types/*": [
-        "src/types/*"
-      ],
     }, /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

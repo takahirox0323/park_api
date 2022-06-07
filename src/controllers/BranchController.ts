@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import BranchService from "@services/BranchService";
+import BranchService from "@/use-case/BranchService";
 import { logger } from "@/config";
-import { BranchRequest } from "@/types/brach";
-import Branch from "@/entities/Branch";
+import { BranchRequest } from "@/presentation/types/brach";
 
 @injectable()
 export default class BranchController {
@@ -14,7 +13,7 @@ export default class BranchController {
     this.branchService = branchService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /branches");
 
     // ユーザ取得

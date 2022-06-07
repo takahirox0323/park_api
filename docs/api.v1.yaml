@@ -1,15 +1,18 @@
 openapi: 3.0.0
 info:
-  title: API仕様書
+  title: 日本ヒュームAPI仕様書
   version: '1.0'
-  description: ''
 servers:
-  - url: 'http://localhost:4000/api'
+  - url: 'http://localhost:3000/api'
+  - url: 'https://dfxcqyb945.execute-api.ap-northeast-1.amazonaws.com/api'
+  - url: 'https://e0z6wb08g0.execute-api.ap-northeast-1.amazonaws.com/api'
 paths:
-  /branches:
+  /sites:
     get:
-      summary: List branch
-      operationId: get-branches
+      summary: List sites
+      tags:
+        - 現場
+      operationId: get-sites
       parameters:
         - schema:
             type: string
@@ -26,13 +29,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Site'
-      tags:
-        - 支社
     post:
       summary: Create a site
       tags:
         - 現場
-      operationId: post-branch
+      operationId: post-sites
       responses:
         '200':
           description: OK
@@ -45,21 +46,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SiteRequest'
-            examples:
-              example-1:
-                value:
-                  name: string
-              example-2:
-                value:
-                  name: string
-                  branchId: 0
-                  confirmationNumber: string
-                  officeName: string
-                  constructionMethodId: 0
-                  status: string
-                  heightReferenceCode: string
-                  cementType: 0
-        description: ''
   '/sites/{siteId}':
     parameters:
       - schema:
@@ -109,9 +95,11 @@ paths:
                     type: string
       tags:
         - 現場
-  /parks:
+  /piles:
     get:
-      summary: List park
+      summary: List piles
+      tags:
+        - 杭
       responses:
         '200':
           description: OK
@@ -139,10 +127,10 @@ paths:
             type: string
           in: query
           name: number
-      tags:
-        - 公園
     post:
       summary: Create a pile
+      tags:
+        - 杭
       responses:
         '200':
           description: OK
@@ -156,9 +144,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PileRequest'
-      tags:
-        - 公園
-    parameters: []
   '/piles/{pileId}':
     parameters:
       - schema:
@@ -1101,6 +1086,7 @@ paths:
                     type: number
       tags:
         - ユーザ
+  /branches:
     get:
       summary: 支社一覧取得
       tags:
@@ -1366,18 +1352,36 @@ components:
       properties:
         id:
           type: number
+        name:
+          type: string
         confirmationNumber:
           type: string
+        officeName:
+          type: string
+        branch:
+          $ref: '#/components/schemas/Branch'
+        constructionMethod:
+          $ref: '#/components/schemas/ConstructionMethod'
+        status:
+          type: string
+        pileDevices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PileDevice'
+        judgementMethods:
+          type: array
+          items:
+            $ref: '#/components/schemas/JudgementMethod'
+        heightReferenceCode:
+          type: string
+        cementType:
+          type: number
         createdAt:
           type: string
         updatedAt:
           type: string
-      x-examples:
-        example-1:
-          id: 0
-          confirmationNumber: string
-          createdAt: string
-          updatedAt: string
+        completedDate:
+          type: string
     SiteRequest:
       title: SiteRequest
       type: object
@@ -1399,78 +1403,134 @@ components:
         cementType:
           type: number
     Pile:
-      title: park
+      title: Pile
       type: object
       properties:
         id:
           type: number
-        name:
+        site:
+          $ref: '#/components/schemas/Site'
+        processNumber:
           type: string
-        address:
+        pileDevice:
+          $ref: '#/components/schemas/PileDevice'
+        number:
           type: string
-        description:
+        constructionStartDatetime:
           type: string
-        prefectureId:
-          type: number
-        areaId:
-          type: number
-        countryId:
-          type: number
-        parkTypeId:
-          type: number
-        parkUrl:
+        constructionLastDatetime:
           type: string
-        openingTime:
+        drillingStartDepth:
+          type: number
+        drillingEndDepth:
+          type: number
+        rootingStartDepth:
+          type: number
+        rootingUpperDepth:
+          type: number
+        rootingLowerDepth:
+          type: number
+        rootingInjection:
+          type: number
+        pileFillingStartDepth:
+          type: number
+        pileFillingEndDepth:
+          type: number
+        pileFillingInjection:
+          type: number
+        bowlingNumber:
           type: string
-        price:
+        supportLayerExpressionLimitDepth:
           type: number
-        categoryId:
+        supportLayerExpressionDepth:
           type: number
+        supportLayerBasisType:
+          type: string
+        supportLayerBasisDescription:
+          type: string
+        otherDescription:
+          type: string
+        designPileFillingInjection:
+          type: number
+        isCheckSheetComplete:
+          type: boolean
+        designRootingInjection:
+          type: number
+        pileTipDiameter:
+          type: number
+        completedDate:
+          type: string
+        orderOfCompletion:
+          type: number
+        diameter:
+          type: number
+        injectionPort:
+          type: number
+        bulbsParts:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulbsPart'
+        pileDesign:
+          $ref: '#/components/schemas/PileDesign'
         createdAt:
           type: string
         updatedAt:
           type: string
     PileRequest:
-      title: ParkRequest
+      title: PileRequest
       type: object
-      x-examples:
-        example-1:
-          id: 0
-          name: string
-          address: string
-          description: string
-          prefectureId: 0
-          areaId: 0
-          countryId: 0
-          parkTypeId: 0
-          parkUrl: string
-          openingTime: string
-          price: 0
-          categoryId: 0
-          createdAt: string
-          updatedAt: string
       properties:
-        name:
-          type: string
-        address:
-          type: string
-        description:
-          type: string
-        prefectureId:
+        siteId:
           type: number
-        areaId:
-          type: number
-        countryId:
-          type: number
-        parkUrl:
+        processNumber:
           type: string
-        openingTime:
+        pileDeviceId:
+          type: number
+        number:
           type: string
-        price:
+        constructionStartDatetime:
+          type: string
+          format: date-time
+        constructionLastDatetime:
+          type: string
+          format: date-time
+        drillingStartDepth:
           type: number
-        categoryId:
+        drillingEndDepth:
           type: number
-        parkTypeId:
+        rootingStartDepth:
+          type: number
+        rootingUpperDepth:
+          type: number
+        rootingLowerDepth:
+          type: number
+        rootingInjection:
+          type: number
+        pileFillingStartDepth:
+          type: number
+        pileFillingEndDepth:
+          type: number
+        pileFillingInjection:
+          type: number
+        bowlingNumber:
+          type: string
+        supportLayerExpressionLimitDepth:
+          type: number
+        supportLayerExpressionDepth:
+          type: number
+        supportLayerBasisType:
+          type: string
+        supportLayerBasisDescription:
+          type: string
+        otherDescription:
+          type: string
+        diameter:
+          type: number
+        injectionPort:
+          type: number
+        heightReferenceCode:
+          type: string
+        heightReference:
           type: number
     NValue:
       title: NValue
@@ -2279,6 +2339,10 @@ components:
                     takesPicture:
                       type: boolean
   responses: {}
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
 tags:
   - name: 現場
   - name: 杭
@@ -2296,3 +2360,5 @@ tags:
   - name: 電流帳票
   - name: ユーザ
   - name: 計画書システム連携
+security:
+  - BearerAuth: []

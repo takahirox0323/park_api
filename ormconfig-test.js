@@ -7,12 +7,12 @@ module.exports = {
   database: "park_api_test",
   synchronize: false,
   logging: true,
-  entities: ["src/entities/**/*.ts"],
-  migrations: ["src/db/migrations/**/*.ts"],
-  subscribers: ["src/db/subscribers/**/*.ts"],
+  entities: ["src/infra/entities/**/*.ts"],
+  migrations: ["src/infra/migrations/**/*.ts"],
+  subscribers: ["src/infra/subscribers/**/*.ts"],
   cli: {
-    entitiesDir: "src/entities",
-    migrationsDir: "src/db/migrations",
-    subscribersDir: "src/db/subscribers",
+    entitiesDir: "src/infra/entities",
+    migrationsDir: "src/infra//migrations",
+    subscribersDir: "src/infra//subscribers",
   },
 };

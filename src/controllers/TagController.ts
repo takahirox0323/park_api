@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import TagService from "@services/TagService";
+import TagService from "@/use-case/TagService";
 import { logger } from "@/config";
-import { TagRequest } from "@/types/tag";
+import { TagRequest } from "@/presentation/types/tag";
 
 @injectable()
 export default class TagController {
@@ -13,7 +13,7 @@ export default class TagController {
     this.TagService = TagService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /tags");
 
     // ユーザ取得

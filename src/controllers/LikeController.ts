@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import LikeService from "@services/LikeService";
+import LikeService from "@/use-case/LikeService";
 import { logger } from "@/config";
-import { LikeRequest } from "@/types/like";
+import { LikeRequest } from "@/presentation/types/like";
 
 @injectable()
 export default class LikeController {
@@ -13,7 +13,7 @@ export default class LikeController {
     this.LikeService = LikeService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /likes");
 
     // ユーザ取得

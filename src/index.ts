@@ -2,14 +2,14 @@ import express from "express";
 import cors from "cors";
 import "reflect-metadata";
 import { getConnectionOptions, createConnection } from "typeorm";
-import branchRouter from "@routes/branch";
-import commentRouter from "@routes/comment";
-import likeRouter from "@routes/like";
-import parkRouter from "@routes/Park";
-import prefectureRouter from "@routes/Prefecture";
-import tagRouter from "@routes/Tag";
-import userRouter from "@routes/User";
-import userSettingRouter from "@routes/userSetting";
+import branchRouter from "@/presentation/routes/branch";
+import commentRouter from "@/presentation/routes/comment";
+import likeRouter from "@/presentation/routes/like";
+import parkRouter from "@/presentation/routes/Park";
+import prefectureRouter from "@/presentation/routes/Prefecture";
+import tagRouter from "@/presentation/routes/Tag";
+import userRouter from "@/presentation/routes/User";
+import userSettingRouter from "@/presentation/routes/userSetting";
 
 const main = async () => {
   // TypeORMの設定

@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import ParkService from "@services/ParkService";
+import ParkService from "@/use-case/ParkService";
 import { logger } from "@/config";
-import { ParkRequest } from "@/types/park";
-import Park from "@/entities/Park";
+import { ParkRequest } from "@/presentation/types/park";
 
 @injectable()
 export default class ParkController {
@@ -14,7 +13,7 @@ export default class ParkController {
     this.ParkService = ParkService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /parks");
 
     // ユーザ取得

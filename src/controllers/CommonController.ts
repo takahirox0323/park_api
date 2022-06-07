@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import CommentService from "@services/CommentService";
+import CommentService from "@/use-case/CommentService";
 import { logger } from "@/config";
-import { CommentRequest } from "@/types/comment";
+import { CommentRequest } from "@/presentation/types/comment";
 
 @injectable()
 export default class CommentController {
@@ -13,7 +13,7 @@ export default class CommentController {
     this.CommentService = CommonService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /comments");
 
     // ユーザ取得

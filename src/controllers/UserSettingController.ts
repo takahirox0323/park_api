@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import UserSettingService from "@services/UserSettingService";
+import UserSettingService from "@/use-case/UserSettingService";
 import { logger } from "@/config";
-import { UserSettingRequest } from "@/types/userSetting";
+import { UserSettingRequest } from "@/presentation/types/userSetting";
 
 @injectable()
 export default class UserSettingController {
@@ -15,7 +15,7 @@ export default class UserSettingController {
     this.UserSettingService = UserSettingService;
   }
 
-  async find(req: Request, res: Response): Promise<void> {
+  async find(req: Request, res: Response) {
     logger.info("START - GET /userSettings");
 
     // ユーザ取得
