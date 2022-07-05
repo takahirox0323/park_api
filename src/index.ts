@@ -10,6 +10,9 @@ import prefectureRouter from "@/presentation/routes/Prefecture";
 import tagRouter from "@/presentation/routes/Tag";
 import userRouter from "@/presentation/routes/User";
 import userSettingRouter from "@/presentation/routes/userSetting";
+import areaRouter from "@/presentation/routes/Area";
+import parkType from "@/presentation/routes/ParkType";
+import { logger } from "./config";
 
 const main = async () => {
   // TypeORMの設定
@@ -29,13 +32,24 @@ const main = async () => {
   );
   app.use(express.json());
 
+  app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.path}`);
+    if (["POST", "PUT", "PATCH"].includes(req.method))
+      logger.info(`body: ${JSON.stringify(req.body)}`);
+    if (["GET"].includes(req.method))
+      logger.info(`query: ${JSON.stringify(req.query)}`);
+    next();
+  });
+
   // ルータの登録
+  app.use("/api/areas", areaRouter);
   app.use("/api/branches", branchRouter);
   app.use("/api/comments", commentRouter);
   app.use("/api/likes", likeRouter);
   app.use("/api/parks", parkRouter);
   app.use("/api/prefectures", prefectureRouter);
   app.use("/api/tags", tagRouter);
+  app.use("/api/parkTypes", parkType);
   app.use("/api/users", userRouter);
   app.use("/api/userSettings", userSettingRouter);
 

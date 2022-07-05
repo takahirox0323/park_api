@@ -15,7 +15,6 @@ export default class ParkController {
 
   async find(req: Request, res: Response) {
     logger.info("START - GET /parks");
-
     // ユーザ取得
     try {
       const Parkes = await this.ParkService.find();

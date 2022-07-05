@@ -1,7 +1,5 @@
 import { injectable } from "inversify";
 import { Repository, getRepository } from "typeorm";
-
-import Branch from "@/infra/entities/Branch";
 import ParkRepository from "../../domain/repository/ParkRepository";
 import { ParkDeleteRequest, ParkRequest } from "@/presentation/types/park";
 import Park from "@/infra/entities/Park";
@@ -15,9 +13,9 @@ export default class ParkRepositoryImpl implements ParkRepository {
   }
 
   // 一覧を取得
-  public async find(): Promise<Park[]> {
+  public async find(): Promise<Park[] | undefined> {
     return await this.repository.find({
-      relations: ["tag"],
+      relations: ["tag", "parkType"],
     });
   }
 
@@ -48,7 +46,7 @@ export default class ParkRepositoryImpl implements ParkRepository {
   }
 
   // 支社の更新
-  public async update(id: number, name: string): Promise<Branch | undefined> {
+  public async update(id: number, name: string): Promise<Park | undefined> {
     const targetPicture = await this.repository.find({ where: { id: id } });
     if (!targetPicture) {
       return undefined;

@@ -28,9 +28,34 @@ import UserSettingRepository from "./domain/repository/UserSettingRepository";
 import UserSettingRepositoryImpl from "./infra/repositories/UserSettingRepositoryImpl";
 import UserSettingService from "./use-case/UserSettingService";
 import UserSettingController from "./controllers/UserSettingController";
+import PrefectureRepository from "./domain/repository/PrefectureRepository";
+import PrefectureService from "./use-case/PrefectureService";
+import PrefectureRepositoryImpl from "./infra/repositories/PrefectureRepositoryImpl";
+import PrefectureController from "./controllers/PrefectureController";
+import AreaController from "./controllers/AreaController";
+import AreaRepository from "./domain/repository/AreaRepositoryRepository";
+import AreaService from "./use-case/AreaService";
+
+import AreaRepositoryImpl from "./infra/repositories/AreaRepositoryImpl";
+import ParkTypeRepository from "./domain/repository/ParkTypeRepository";
+import ParkTypeRepositoryImpl from "./infra/repositories/ParkTypeRepositoryImpl";
+import ParkTypeController from "./controllers/ParkTypeController";
+import ParkTypeService from "./use-case/ParkTypeService";
 
 // DIコンテナ
 const container = new Container();
+
+container.bind<AreaRepository>("AreaRepository").to(AreaRepositoryImpl);
+container.bind<AreaService>("AreaService").to(AreaService);
+container.bind<AreaController>("AreaController").to(AreaController);
+
+container
+  .bind<PrefectureRepository>("PrefectureRepository")
+  .to(PrefectureRepositoryImpl);
+container.bind<PrefectureService>("PrefectureService").to(PrefectureService);
+container
+  .bind<PrefectureController>("PrefectureController")
+  .to(PrefectureController);
 
 container.bind<BranchRepository>("BranchRepository").to(BranchRepositoryImpl);
 container.bind<BranchService>("BranchService").to(BranchService);
@@ -51,6 +76,12 @@ container.bind<likeController>("LikeController").to(likeController);
 container.bind<TagRepository>("TagRepository").to(TagRepositoryImpl);
 container.bind<TagService>("TagService").to(TagService);
 container.bind<TagController>("TagController").to(TagController);
+
+container
+  .bind<ParkTypeRepository>("ParkTypeRepository")
+  .to(ParkTypeRepositoryImpl);
+container.bind<ParkTypeService>("ParkTypeService").to(ParkTypeService);
+container.bind<ParkTypeController>("ParkTypeController").to(ParkTypeController);
 
 container
   .bind<CommentRepository>("CommentRepository")

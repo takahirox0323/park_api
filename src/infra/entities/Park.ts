@@ -1,3 +1,4 @@
+import ParkTypeController from "@/controllers/ParkTypeController";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -8,6 +9,7 @@ import {
   JoinColumn,
   JoinTable,
 } from "typeorm";
+import ParkType from "./ParkType";
 import Tags from "./Tags";
 
 @Entity()
@@ -49,8 +51,9 @@ export default class Park {
   @Column({ type: "varchar" })
   price?: number;
 
-  @Column({ type: "varchar" })
-  categoryId?: number;
+  @ManyToOne(() => ParkType, (parkType) => parkType.parks)
+  @JoinTable({ name: "parkTypeId" })
+  parkType?: ParkType;
 
   @Column({ type: "varchar" })
   createdUserId?: number;
