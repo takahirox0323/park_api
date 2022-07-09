@@ -9,7 +9,7 @@ export default class ParkTypeController {
   private ParkTypeService: ParkTypeService;
 
   // サービスをコンストラクタで注入（DI）
-  constructor(@inject("ParkTypService") ParkTypeService: ParkTypeService) {
+  constructor(@inject("ParkTypeService") ParkTypeService: ParkTypeService) {
     this.ParkTypeService = ParkTypeService;
   }
 

@@ -15,56 +15,59 @@ import Tags from "./Tags";
 @Entity()
 export default class Park {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id: number;
 
   @Column({ type: "varchar" })
-  name?: string;
+  name: string;
 
   @Column({ type: "varchar" })
-  address?: string;
+  address: string;
 
   @Column({ type: "varchar" })
-  description?: string;
+  description: string;
 
   @Column({ type: "varchar" })
-  prefectureId?: number;
+  prefectureId: number;
 
   @Column({ type: "varchar" })
-  areaId?: number;
+  areaId: number;
 
   @Column({ type: "varchar" })
-  countryId?: number;
+  countryId: number;
 
   @Column({ type: "varchar" })
-  parkTypeId?: number;
+  parkTypeId: number;
 
   @Column({ type: "varchar" })
-  parkUrl?: string;
+  parkUrl: string;
 
   @Column({ type: "varchar" })
-  openingTime?: string;
+  openingTime: string;
 
   @ManyToOne(() => Tags, (tags) => tags.parks)
   @JoinTable({ name: "tagId" })
-  tag?: Tags;
+  tag: Tags;
 
   @Column({ type: "varchar" })
-  price?: number;
+  price: number;
 
   @ManyToOne(() => ParkType, (parkType) => parkType.parks)
   @JoinTable({ name: "parkTypeId" })
-  parkType?: ParkType;
+  parkType: ParkType;
 
   @Column({ type: "varchar" })
-  createdUserId?: number;
+  createdUserId: number;
+
+  @Column({ type: "varchar" })
+  parkStatusId: number;
 
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
-  createdAt?: Date;
+  createdAt: Date;
 
   @Column({
     type: "datetime",
     default: () => "CURRENT_TIMESTAMP",
     onUpdate: "CURRENT_TIMESTAMP",
   })
-  updatedAt?: Date;
+  updatedAt: Date;
 }

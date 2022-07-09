@@ -12,6 +12,7 @@ import userRouter from "@/presentation/routes/User";
 import userSettingRouter from "@/presentation/routes/userSetting";
 import areaRouter from "@/presentation/routes/Area";
 import parkType from "@/presentation/routes/ParkType";
+import Photos from "@/presentation/routes/photo";
 import { logger } from "./config";
 
 const main = async () => {
@@ -52,6 +53,7 @@ const main = async () => {
   app.use("/api/parkTypes", parkType);
   app.use("/api/users", userRouter);
   app.use("/api/userSettings", userSettingRouter);
+  app.use("/api/photos", Photos);
 
   app.get("/", (req, res) => {
     res.send("Hello");

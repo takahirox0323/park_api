@@ -11,6 +11,7 @@ export type ParkRequest = {
   categoryId: number;
   parkTypeId: number;
   createdUserId: number;
+  parkStatusId: number;
 };
 
 export type ParkDeleteRequest = {

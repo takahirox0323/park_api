@@ -34,6 +34,7 @@ export default class ParkRepositoryImpl implements ParkRepository {
       categoryId: brachRequest.categoryId,
       parkTypeId: brachRequest.parkTypeId,
       createdUserId: brachRequest.createdUserId,
+      parkStatusId: brachRequest.parkStatusId,
     });
   }
 

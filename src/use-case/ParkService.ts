@@ -3,6 +3,7 @@ import ParkRepository from "@/domain/repository/ParkRepository";
 import { ParkDeleteRequest, ParkRequest } from "@/presentation/types/park";
 import PrefectureRepository from "@/domain/repository/PrefectureRepository";
 import AreaRepository from "@/domain/repository/AreaRepositoryRepository";
+import { PARK_STATUS } from "@/constants";
 
 @injectable()
 export default class ParkService {
@@ -41,6 +42,9 @@ export default class ParkService {
         ...park,
         prefectureName: prefecture?.name,
         areaName: area?.name,
+        parkStatusName: Object.values(PARK_STATUS).find(
+          (value) => value.id === Number(park.parkStatusId)
+        )?.name,
       };
     });
   }

@@ -23,6 +23,9 @@ export default class UserRepositoryImpl implements UserRepository {
     return await this.repository.save({
       familyName: userRequest.familyName,
       givenName: userRequest.givenName,
+      sexId: userRequest.sexId,
+      age: userRequest.age,
+      createdUserId: userRequest.createdUserId,
     });
   }
 

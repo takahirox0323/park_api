@@ -3,24 +3,24 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export default class UserSetting {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id: number;
 
   @Column({ type: "varchar" })
-  userId?: number;
+  userId: number;
 
   @Column({ type: "varchar" })
-  isNotification?: number;
+  isNotification: number;
 
   @Column({ type: "varchar" })
-  hasMail?: number;
+  hasMail: number;
 
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
-  createdAt?: Date;
+  createdAt: Date;
 
   @Column({
     type: "datetime",
     default: () => "CURRENT_TIMESTAMP",
     onUpdate: "CURRENT_TIMESTAMP",
   })
-  updatedAt?: Date;
+  updatedAt: Date;
 }

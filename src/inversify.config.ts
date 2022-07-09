@@ -41,6 +41,10 @@ import ParkTypeRepository from "./domain/repository/ParkTypeRepository";
 import ParkTypeRepositoryImpl from "./infra/repositories/ParkTypeRepositoryImpl";
 import ParkTypeController from "./controllers/ParkTypeController";
 import ParkTypeService from "./use-case/ParkTypeService";
+import PhotoService from "./use-case/PhotoService";
+import PhotoRepositoryImpl from "./infra/repositories/PhotoRepositoryImpl";
+import PhotoRepository from "./domain/repository/PhotoRepository";
+import PhotoController from "./controllers/PhotoController";
 
 // DIコンテナ
 const container = new Container();
@@ -48,6 +52,12 @@ const container = new Container();
 container.bind<AreaRepository>("AreaRepository").to(AreaRepositoryImpl);
 container.bind<AreaService>("AreaService").to(AreaService);
 container.bind<AreaController>("AreaController").to(AreaController);
+
+container
+  .bind<ParkTypeRepository>("ParkTypeRepository")
+  .to(ParkTypeRepositoryImpl);
+container.bind<ParkTypeService>("ParkTypeService").to(ParkTypeService);
+container.bind<ParkTypeController>("ParkTypeController").to(ParkTypeController);
 
 container
   .bind<PrefectureRepository>("PrefectureRepository")
@@ -78,12 +88,6 @@ container.bind<TagService>("TagService").to(TagService);
 container.bind<TagController>("TagController").to(TagController);
 
 container
-  .bind<ParkTypeRepository>("ParkTypeRepository")
-  .to(ParkTypeRepositoryImpl);
-container.bind<ParkTypeService>("ParkTypeService").to(ParkTypeService);
-container.bind<ParkTypeController>("ParkTypeController").to(ParkTypeController);
-
-container
   .bind<CommentRepository>("CommentRepository")
   .to(CommentRepositoryImpl);
 container.bind<CommentService>("CommentService").to(CommentService);
@@ -96,5 +100,9 @@ container.bind<UserSettingService>("UserSettingService").to(UserSettingService);
 container
   .bind<UserSettingController>("UserSettingController")
   .to(UserSettingController);
+
+container.bind<PhotoRepository>("PhotoRepository").to(PhotoRepositoryImpl);
+container.bind<PhotoService>("PhotoService").to(PhotoService);
+container.bind<PhotoController>("PhotoController").to(PhotoController);
 
 export default container;

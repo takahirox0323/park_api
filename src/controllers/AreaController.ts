@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { inject, injectable } from "inversify";
-import PrefectureService from "@/use-case/PrefectureService";
 import { logger } from "@/config";
-import { PrefectureRequest } from "@/presentation/types/prefecture";
 import AreaService from "@/use-case/AreaService";
 
 @injectable()

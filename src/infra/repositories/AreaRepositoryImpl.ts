@@ -1,12 +1,5 @@
 import { injectable } from "inversify";
 import { Repository, getRepository } from "typeorm";
-
-import Prefecture from "@/infra/entities/Prefecture";
-import PrefectureRepository from "../../domain/repository/PrefectureRepository";
-import {
-  PrefectureDeleteRequest,
-  PrefectureRequest,
-} from "@/presentation/types/prefecture";
 import Area from "../entities/Area";
 
 @injectable()

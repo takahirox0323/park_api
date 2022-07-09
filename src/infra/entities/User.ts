@@ -3,30 +3,30 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export default class User {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id: number;
 
   @Column({ type: "varchar" })
-  familyName?: string;
+  familyName: string;
 
   @Column({ type: "varchar" })
-  givenName?: string;
+  givenName: string;
 
   @Column({ type: "varchar" })
-  sexId?: number;
+  sexId: number;
 
   @Column({ type: "varchar" })
-  age?: number;
+  age: number;
 
   @Column({ type: "varchar" })
-  createdUserId?: string;
+  createdUserId: string;
 
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
-  createdAt?: Date;
+  createdAt: Date;
 
   @Column({
     type: "datetime",
     default: () => "CURRENT_TIMESTAMP",
     onUpdate: "CURRENT_TIMESTAMP",
   })
-  updatedAt?: Date;
+  updatedAt: Date;
 }

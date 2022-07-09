@@ -1,22 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import Park from "./Park";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export default class Tags {
+export default class Photo {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: "varchar" })
-  name: string;
+  key: string;
 
   @Column({ type: "varchar" })
-  categoryId: number;
+  parkId: number;
+
+  @Column({ type: "varchar" })
+  createdUserId: number;
 
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
-
-  @OneToMany(() => Park, (park) => park.id)
-  parks: Park[];
 
   @Column({
     type: "datetime",

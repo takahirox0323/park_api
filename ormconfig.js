@@ -9,8 +9,10 @@ module.exports = {
   logging: false,
   entities: ["src/infra/entities/**/*.ts"],
   migrations: ["src/infra/migrations/**/*.ts"],
+  subscribers: ["src/infra/migrations/**/*.ts"],
   cli: {
     entitiesDir: "src/infra/entities",
-    migrationsDir: "src/infra//migrations",
+    migrationsDir: "src/infra/migrations",
+    subscribersDir: "src/infra/migrations",
   },
 };
