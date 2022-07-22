@@ -4,6 +4,6 @@ dotenv.config();
 
 export const logger = log4js.getLogger();
 
-logger.level = "info";
+logger.level = process.env.LOG_LEVEL ?? "info";
 
 export const TEST_ENV = process.env.TEST_ENV;

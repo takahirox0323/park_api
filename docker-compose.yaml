@@ -6,7 +6,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: parkApi
+      MYSQL_DATABASE: park_api
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
       TZ: "Asia/Tokyo"
@@ -16,19 +16,3 @@ services:
       - ./volumes/db/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306
-
-  db-test:
-    platform: linux/x86_64
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: parkApi_test
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
-      TZ: "Asia/Tokyo"
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./volumes/test/db/data:/var/lib/mysql
-      - ./volumes/test/db/my.cnf:/etc/mysql/conf.d/my.cnf
-    ports:
-      - 3307:3306

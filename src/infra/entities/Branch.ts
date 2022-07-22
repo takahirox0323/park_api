@@ -7,6 +7,8 @@ export default class Branch {
 
   @Column({ type: "varchar" })
   name: string;
+  @Column({ type: "varchar" })
+  aaaname: string;
 
   @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;

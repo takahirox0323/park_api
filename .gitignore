@@ -3,7 +3,4 @@ node_modules
 dist
 volumes
 .env
-debug.log
-system.log
-doc/api-doc.html
-.DS_Store
+coverage

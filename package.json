@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
+    "dev:debug": "nodemon --inspect",
     "start": "ts-node -T -r tsconfig-paths/register ./src/index.ts",
     "test": "jest",
-    "make:migration": "ts-node node_modules/.bin/typeorm migration:generate",
-    "create:migration": "ts-node node_modules/.bin/typeorm migration:create",
-    "migrate": "ts-node node_modules/.bin/typeorm migration:run",
-    "migrate:test": "ts-node node_modules/.bin/typeorm migration:run -f ormconfig-test.js",
-    "rollback": "ts-node node_modules/.bin/typeorm migration:revert",
+    "make:migration": "ts-node -T node_modules/.bin/typeorm migration:generate",
+    "create:migration": "ts-node -T node_modules/.bin/typeorm migration:create",
+    "migrate": "ts-node -T node_modules/.bin/typeorm migration:run",
+    "migrate:test": "ts-node -T node_modules/.bin/typeorm migration:run -f ormconfig-test.js",
+    "rollback": "ts-node -T node_modules/.bin/typeorm migration:revert",
     "lint": "eslint src"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "archiver": "^5.3.0",
+    "aws-sdk": "^2.927.0",
     "busboy": "^0.3.1",
     "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
@@ -30,7 +32,10 @@
     "lodash": "^4.17.21",
     "log4js": "^6.3.0",
     "mysql2": "^2.2.5",
+    "puppeteer": "^10.2.0",
     "reflect-metadata": "^0.1.13",
+    "sharp": "^0.30.1",
+    "stream-buffers": "^3.0.2",
     "typeorm": "^0.2.29"
   },
   "devDependencies": {
@@ -43,6 +48,8 @@
     "@types/lodash": "^4.14.170",
     "@types/mysql": "^2.15.16",
     "@types/node": "^14.14.16",
+    "@types/puppeteer": "^5.4.4",
+    "@types/sharp": "^0.29.5",
     "@types/stream-buffers": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
